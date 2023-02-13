@@ -12,11 +12,13 @@ int	write_error(char *str, char *argv)
 	return (1);
 }
 
-int	ft_exe(char *arg, char **argv, int i, char **envp)
+int	ft_exe(char **argv, int i, int temp_fd, char **envp)
 {
+	dup2(temp_fd, 0);
+	close(temp_fd);
 	argv[i]=NULL;
-	if(execve(arg, argv, envp) == -1)
-		return(write_error("error: cannot execute ", arg));
+	if(execve(argv[0], argv, envp) == -1)
+		return(write_error("error: cannot execute ", argv[0]));
 	return (0);
 }
 
@@ -24,6 +26,7 @@ int main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	int i = 0;
+	int temp_fd = dup(0);
 	while (argv[i] && argv[i + 1])
 	{
 		argv = &argv[i + 1];
@@ -41,7 +44,7 @@ int main(int argc, char **argv, char **envp)
 		{
 			if(!fork())
 			{
-				if(ft_exe(argv[0], argv, i, envp))
+				if(ft_exe(argv, i, temp_fd, envp))
 					return (1);
 			}
 			else
