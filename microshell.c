@@ -6,7 +6,7 @@ int	write_error(char *str, char *argv)
 {
 	while (*str)
 		write(2, str++, 1);
-	while (*argv)
+	while (argv && *argv)
 		write(2, argv++, 1);
 	write(2, "\n", 1);
 	return (1);
@@ -17,9 +17,8 @@ int	ft_exe(char **argv, int i, int temp_fd, char **envp)
 	dup2(temp_fd, 0);
 	close(temp_fd);
 	argv[i]=NULL;
-	if(execve(argv[0], argv, envp) == -1)
-		return(write_error("error: cannot execute ", argv[0]));
-	return (0);
+	execve(argv[0], argv, envp);
+	return(write_error("error: cannot execute ", argv[0]));
 }
 
 int main(int argc, char **argv, char **envp)
@@ -27,6 +26,7 @@ int main(int argc, char **argv, char **envp)
 	(void)argc;
 	int i = 0;
 	int temp_fd = dup(0);
+	int fd[2];
 	while (argv[i] && argv[i + 1])
 	{
 		argv = &argv[i + 1];
@@ -49,8 +49,30 @@ int main(int argc, char **argv, char **envp)
 			}
 			else
 			{
-				waitpid(-1,NULL,0);
+				close(temp_fd);
+				while(waitpid(-1,NULL,WUNTRACED) != -1);
+				temp_fd = dup(0);
+			}
+		}
+		else if (i != 0 && strcmp("|", argv[i]) == 0)
+		{
+			pipe(fd);
+			if(!fork())
+			{
+				dup2(fd[1], 0);
+				close(fd[0]);
+				close(fd[1]);
+				if (ft_exe(argv, i, temp_fd, envp))
+					return (1);
+			}
+			else
+			{
+				close(fd[1]);
+				close(temp_fd);
+				temp_fd = fd[0];
 			}
 		}
 	}
+	close(temp_fd);
+	return (1);
 }
