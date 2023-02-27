@@ -4,7 +4,7 @@
 
 int	write_error(char *str, char *argv)
 {
-	while (*str)
+	while (str && *str)
 		write(2, str++, 1);
 	while (argv && *argv)
 		write(2, argv++, 1);
@@ -50,7 +50,7 @@ int main(int argc, char **argv, char **envp)
 			else
 			{
 				close(temp_fd);
-				while(waitpid(-1,NULL,WUNTRACED) != -1);
+				waitpid(-1, NULL, WUNTRACED);
 				temp_fd = dup(0);
 			}
 		}
@@ -59,16 +59,16 @@ int main(int argc, char **argv, char **envp)
 			pipe(fd);
 			if(!fork())
 			{
-				dup2(fd[1], 0);
+				dup2(fd[1], 1);
 				close(fd[0]);
-				close(fd[1]);
 				if (ft_exe(argv, i, temp_fd, envp))
 					return (1);
 			}
 			else
 			{
-				close(fd[1]);
 				close(temp_fd);
+				close(fd[1]);
+				waitpid(-1, NULL, WUNTRACED);
 				temp_fd = fd[0];
 			}
 		}
