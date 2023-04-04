@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Warlock.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/04 18:55:50 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/04 23:15:26 by mtemel           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Warlock.hpp"
 
-Warlock::Warlock(std::string name, std::string title)
+Warlock::Warlock(std::string const &name, std::string const &title)
 {
 	this->name = name;
 	this->title = title;
