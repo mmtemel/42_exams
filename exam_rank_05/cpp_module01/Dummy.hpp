@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Warlock.hpp                                        :+:      :+:    :+:   */
+/*   Dummy.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 13:05:59 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/06 13:17:08 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/06 14:40:00 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/06 14:53:36 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "ATarget.hpp"
 
-class Warlock
+class Dummy : public ATarget
 {
-	private:
-		std::string name;
-		std::string title;
-		
-		Warlock();
-		Warlock(const Warlock& copy);
-		Warlock operator = (const Warlock& copy);
 	public:
-		Warlock(const std::string &name, const std::string &title);
-		~Warlock();
+		Dummy();
+		~Dummy();
 
-		const std::string& getName() const;
-		const std::string& getTitle() const;
-
-		void setTitle(const std::string &title);
-
-		void introduce() const;
+		ATarget* clone();
 };
