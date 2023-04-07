@@ -5,20 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 14:09:19 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/06 14:17:12 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/07 15:26:10 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/07 16:55:46 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FWOOSH_HPP
+#define FWOOSH_HPP
+
 #include "ASpell.hpp"
 
-class Fwoosh : public ASpell
+class Fwoosh :public ASpell
 {
-	private:
-
 	public:
 		Fwoosh();
 		~Fwoosh();
 
-		ASpell* clone();
+	virtual ASpell *clone() const;
 };
+
+#endif

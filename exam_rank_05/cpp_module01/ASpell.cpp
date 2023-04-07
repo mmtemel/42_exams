@@ -5,22 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 13:39:35 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/06 15:46:23 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/07 14:47:57 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/07 15:19:21 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ASpell.hpp"
 
-// ASpell::ASpell()
-// ASpell(const ASpell& copy);
-// ASpell operator = (const ASpell& copy);
-ASpell::ASpell(const std::string &name, const std::string &effects)
+ASpell::ASpell() {}
+ASpell::ASpell(const std::string& name, const std::string& effects)
 {
 	this->name = name;
 	this->effects = effects;
 }
-// ~ASpell();
+ASpell::~ASpell() {}
+ASpell::ASpell(const ASpell &copy) : name(copy.name), effects(copy.effects) {}
+ASpell& ASpell::operator = (const ASpell &copy)
+{
+	this->name = copy.name;
+	this->effects = copy.effects;
+	return (*this);
+}
 
 const std::string& ASpell::getName() const
 {
@@ -31,16 +36,7 @@ const std::string& ASpell::getEffects() const
 	return (this->effects);
 }
 
-void ASpell::launch(ATarget const &atarget)
+void ASpell::launch(const ATarget& target) const
 {
-	atarget.getHitBySpell(*this);
-}
-
-void ASpell::setName(const std::string &name)
-{
-	this->name = name;
-}
-void ASpell::setEffects(const std::string &effects)
-{
-	this->effects = effects;
+	target.getHitBySpell(*this);
 }
