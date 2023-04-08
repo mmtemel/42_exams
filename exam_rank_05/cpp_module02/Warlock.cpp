@@ -6,7 +6,7 @@
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:20:22 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 13:50:59 by mtemel           ###   ########.fr       */
+/*   Updated: 2023/04/08 15:39:06 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,17 @@ void Warlock::setTitle(std::string const &title)
 void Warlock::introduce() const
 {
 	std::cout<<this->name<<": I am "<<this->name<<", "<<this->title<<"!\n";
+}
+
+void Warlock::learnSpell(ASpell *spell)
+{
+	this->spellbook.learnSpell(spell);
+}
+void Warlock::forgetSpell(std::string spellname)
+{
+	this->spellbook.forgetSpell(spellname);
+}
+void Warlock::launchSpell(std::string spellname, ATarget const &target)
+{
+	(this->spellbook.createSpell(spellname))->launch(target);
 }

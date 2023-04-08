@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ATarget.hpp                                        :+:      :+:    :+:   */
+/*   SpellBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 14:07:22 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 14:50:54 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/08 15:05:26 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/08 15:21:13 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <vector>
 #include "ASpell.hpp"
 
 class ASpell;
 
-class ATarget
+class SpellBook
 {
 private:
-	std::string type;
+	std::vector<ASpell*> spells;
+
+	SpellBook(const SpellBook &copy);
+	SpellBook& operator = (const SpellBook &copy);
 public:
-	ATarget();
-	ATarget(std::string const &type);
-	ATarget(const ATarget &copy);
-	ATarget& operator = (const ATarget &copy);
-	virtual ~ATarget();
+	SpellBook();
+	~SpellBook();
 
-	std::string const& getType() const;
-
-	virtual ATarget* clone() const = 0;
-
-	void getHitBySpell(ASpell const &spell) const;
+	void learnSpell(ASpell* spell);
+	void forgetSpell(std::string const &spellname);
+	ASpell* createSpell(std::string const &spellname);
 };
+

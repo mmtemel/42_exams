@@ -6,17 +6,24 @@
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 13:15:57 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 13:51:11 by mtemel           ###   ########.fr       */
+/*   Updated: 2023/04/08 15:35:37 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include <iostream>
+#include <vector>
+#include "ASpell.hpp"
+#include "ATarget.hpp"
+#include "SpellBook.hpp"
 
 class Warlock
 {
 private:
 	std::string name;
 	std::string title;
+	SpellBook spellbook;
 	
 	Warlock();
 	Warlock(const Warlock& copy);
@@ -31,4 +38,8 @@ public:
 	void setTitle(std::string const &title);
 
 	void introduce() const;
+
+	void learnSpell(ASpell *spell);
+	void forgetSpell(std::string spellname);
+	void launchSpell(std::string spellname, ATarget const &target);
 };

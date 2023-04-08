@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ATarget.hpp                                        :+:      :+:    :+:   */
+/*   Fireball.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 14:07:22 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 14:50:54 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/08 14:55:44 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/08 14:56:58 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Fireball.hpp"
 
-#include <iostream>
-#include "ASpell.hpp"
+Fireball::Fireball() : ASpell("Fireball", "burnt to a crisp") {}
+Fireball::~Fireball() {}
 
-class ASpell;
-
-class ATarget
+ASpell* Fireball::clone() const
 {
-private:
-	std::string type;
-public:
-	ATarget();
-	ATarget(std::string const &type);
-	ATarget(const ATarget &copy);
-	ATarget& operator = (const ATarget &copy);
-	virtual ~ATarget();
-
-	std::string const& getType() const;
-
-	virtual ATarget* clone() const = 0;
-
-	void getHitBySpell(ASpell const &spell) const;
-};
+	return (new Fireball());
+}

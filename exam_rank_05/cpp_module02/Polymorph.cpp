@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ATarget.hpp                                        :+:      :+:    :+:   */
+/*   Polymorph.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 14:07:22 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 14:50:54 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/08 14:59:20 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/08 15:00:31 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Polymorph.hpp"
 
-#include <iostream>
-#include "ASpell.hpp"
+Polymorph::Polymorph() : ASpell("Polymorph", "turned into a critter") {}
+Polymorph::~Polymorph() {}
 
-class ASpell;
-
-class ATarget
+ASpell* Polymorph::clone() const
 {
-private:
-	std::string type;
-public:
-	ATarget();
-	ATarget(std::string const &type);
-	ATarget(const ATarget &copy);
-	ATarget& operator = (const ATarget &copy);
-	virtual ~ATarget();
-
-	std::string const& getType() const;
-
-	virtual ATarget* clone() const = 0;
-
-	void getHitBySpell(ASpell const &spell) const;
-};
+	return (new Polymorph());
+}

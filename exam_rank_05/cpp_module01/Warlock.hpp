@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 14:23:39 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/07 16:50:37 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/08 13:15:57 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/08 14:33:19 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WARLOCK_HPP
-#define WARLOCK_HPP
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -20,27 +19,26 @@
 
 class Warlock
 {
-	private:
-		std::string name;
-		std::string title;
-		std::vector<ASpell*> spells;
+private:
+	std::string name;
+	std::string title;
+	std::vector<ASpell*> spells;
+	
+	Warlock();
+	Warlock(const Warlock& copy);
+	Warlock &operator = (const Warlock& copy);
+public:
+	Warlock(std::string const &name,std::string const &title);
+	~Warlock();
 
-		Warlock();
-		Warlock(const Warlock &copy);
-		Warlock &operator = (const Warlock &copy);
-	public:
-		Warlock(const std::string& name, const std::string& title);
-		~Warlock();
+	std::string const& getName() const;
+	std::string const& getTitle() const;
 
-		const std::string& getName() const;
-		const std::string& getTitle() const;
-		void setTitle(const std::string& title);
+	void setTitle(std::string const &title);
 
-		void introduce() const;
+	void introduce() const;
 
-		void learnSpell(ASpell* spell);
-		void forgetSpell(std::string spellname);
-		void launchSpell(std::string spellname, ATarget const &target);
+	void learnSpell(ASpell *spell);
+	void forgetSpell(std::string spellname);
+	void launchSpell(std::string spellname, ATarget const &target);
 };
-
-#endif

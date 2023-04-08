@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 14:36:10 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/07 17:06:56 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/08 13:28:28 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/08 14:51:28 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int main()
 
   richard.forgetSpell("Fwoosh");
   richard.launchSpell("Fwoosh", bob);
+
   delete fwoosh;
 }
