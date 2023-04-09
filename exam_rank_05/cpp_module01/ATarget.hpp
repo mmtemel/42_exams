@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 14:07:22 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 14:50:54 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/09 15:48:24 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/09 16:27:23 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ private:
 	std::string type;
 public:
 	ATarget();
-	ATarget(std::string const &type);
 	ATarget(const ATarget &copy);
-	ATarget& operator = (const ATarget &copy);
+	ATarget &operator = (const ATarget &copy);
+	ATarget(std::string const &type);
 	virtual ~ATarget();
 
-	std::string const& getType() const;
+	std::string const &getType() const;
 
 	virtual ATarget* clone() const = 0;
 

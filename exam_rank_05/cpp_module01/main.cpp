@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 13:28:28 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 14:51:28 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/09 15:32:02 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/09 16:29:26 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Warlock.hpp"
 #include "ASpell.hpp"
 #include "ATarget.hpp"
-#include "Fwoosh.hpp"
 #include "Dummy.hpp"
+#include "Fwoosh.hpp"
 
 int main()
 {

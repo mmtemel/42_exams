@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 13:20:22 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 13:50:59 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/09 15:25:41 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/09 15:31:19 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ Warlock::~Warlock()
 	std::cout<<this->name<<": My job here is done!"<<std::endl;
 }
 
-std::string const& Warlock::getName() const
+std::string const &Warlock::getName() const
 {
 	return (this->name);
 }
-std::string const& Warlock::getTitle() const
+std::string const &Warlock::getTitle() const
 {
 	return (this->title);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 15:39:46 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 15:42:44 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/09 16:52:49 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/09 16:54:26 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class TargetGenerator
 {
 private:
 	std::vector<ATarget*> targets;
-
+	
 	TargetGenerator(const TargetGenerator &copy);
-	TargetGenerator& operator = (const TargetGenerator &copy);
+	TargetGenerator &operator = (const TargetGenerator &copy);
 public:
 	TargetGenerator();
 	~TargetGenerator();

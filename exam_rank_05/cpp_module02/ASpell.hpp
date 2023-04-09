@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 13:56:29 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/08 14:50:45 by mtemel           ###   ########.fr       */
+/*   Created: 2023/04/09 15:35:51 by mtemel            #+#    #+#             */
+/*   Updated: 2023/04/09 16:27:28 by mtemel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ private:
 	std::string effects;
 public:
 	ASpell();
-	ASpell(std::string const &name, std::string const &effects);
 	ASpell(const ASpell &copy);
-	ASpell& operator = (const ASpell &copy);
+	ASpell &operator = (const ASpell &copy);
+	ASpell(std::string const &name, std::string const &effects);
 	virtual ~ASpell();
 
-	std::string const& getName() const;
-	std::string const& getEffects() const;
+	std::string const &getName() const;
+	std::string const &getEffects() const;
 
 	virtual ASpell* clone() const = 0;
 
