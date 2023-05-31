@@ -1,24 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Polymorph.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 16:34:22 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/09 16:34:39 by mtemel           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#pragma once
-
 #include "ASpell.hpp"
 
 class Polymorph : public ASpell
 {
-public:
-	Polymorph();
-	~Polymorph();
-
-	ASpell* clone() const;
+	public:
+		Polymorph();
+		~Polymorph();
+		ASpell *clone() const;
 };

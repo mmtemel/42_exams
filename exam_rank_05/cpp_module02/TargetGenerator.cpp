@@ -1,60 +1,33 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   TargetGenerator.cpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mtemel <mtemel@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/09 16:54:46 by mtemel            #+#    #+#             */
-/*   Updated: 2023/04/09 16:59:10 by mtemel           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "TargetGenerator.hpp"
 
 TargetGenerator::TargetGenerator() {}
-TargetGenerator::~TargetGenerator()
+TargetGenerator::~TargetGenerator() {}
+
+TargetGenerator::TargetGenerator(TargetGenerator const &copy)
 {
-	std::vector<ATarget*>::iterator ite = this->targets.end();
-	for(std::vector<ATarget*>::iterator it = this->targets.begin(); it != ite; it++)
-	{
-		if (*it)
-		{
-			delete (*it);
-			this->targets.erase(it);
-		}
-	}
+	*this = copy;
 }
 
-void TargetGenerator::learnTargetType(ATarget* target)
+TargetGenerator &TargetGenerator::operator = (TargetGenerator const &copy)
 {
-	std::vector<ATarget*>::iterator ite = this->targets.end();
-	for(std::vector<ATarget*>::iterator it = this->targets.begin(); it != ite; it++)
-	{
-		if((*it)->getType() == target->getType())
-			return;
-	}
-	this->targets.push_back(target->clone());
+	this->targets = copy.targets;
+	return (*this);
+}
+
+void TargetGenerator::learnTargetType(ATarget *target)
+{
+	if(target)
+		this->targets[target->getType()] = target;
 }
 void TargetGenerator::forgetTargetType(std::string const &targetname)
 {
-	std::vector<ATarget*>::iterator ite = this->targets.end();
-	for(std::vector<ATarget*>::iterator it = this->targets.begin(); it != ite; it++)
-	{
-		if((*it)->getType() == targetname)
-		{
-			delete (*it);
-			this->targets.erase(it);
-		}
-	}
+	if(this->targets.find(targetname)!=this->targets.end())
+		this->targets.erase(this->targets.find(targetname));
 }
-ATarget* TargetGenerator::createTarget(std::string const &targetname)
+ATarget *TargetGenerator::createTarget(std::string const &targetname)
 {
-	std::vector<ATarget*>::iterator ite = this->targets.end();
-	for(std::vector<ATarget*>::iterator it = this->targets.begin(); it != ite; it++)
-	{
-		if((*it)->getType() == targetname)
-			return (*it);
-	}
-	return (0);
+	ATarget *temp = NULL;
+	if(this->targets.find(targetname)!=this->targets.end())
+		temp = this->targets.find(targetname)->second;
+	return (temp);
 }
